@@ -1,7 +1,7 @@
 ---
 title: 'Snake Game: Update this title'
 author: '**Rami Abudamous and Mihika Krishna** (website template by Ryan Tsang)'
-date: '*EEC172 SQ24*'
+date: '*EEC172 SQ24 TEST*'
 
 subtitle: '<blockquote><b>EEC172 Final Project Webpage Example</b><br/>
 Note to current students: this is an <i>example</i> webpage and
