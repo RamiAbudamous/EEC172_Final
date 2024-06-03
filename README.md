@@ -1,4 +1,4 @@
-# EEC 172 Project Website Template Repo
+# EEC 172 Final Project Website
 
 > The contents of this example project website are being published with the
 > permission of its authors Kushagra Tiwari and Shengmin Liu.
@@ -35,57 +35,7 @@ Then clone your repository locally and make edits to the template as needed.
 You can make your repository publish itself automatically by following 
 [these instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
 
-## Dependecy Installation
 
-Use of this template requires the following software:
-- `pandoc`
-- `make`
-- `git` (for publishing to github)
-
-You can check if you already have the commands by running the following
-in your terminal:
-
-  ```console
-  $ pandoc --version
-  $ make --version
-  $ git --version
-  ```
-
-### Windows
-
-Recommended installation method for windows if you don't already have it:
-
-1.  Open PowerShell (v5.1 or later)
-	- Yes, it needs to be PowerShell, not command line or cmd
-	- It should _not_ be as an Administrator. Scoop is meant to be installed
-	  at the user-level.
-
-1.  Install [Scoop](https://scoop.sh/)
-	```console
-	$ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-	$ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-	```
-
-1.  Install anything you don't have:
-	```console
-	$ scoop install make
-	$ scoop install pandoc
-	$ scoop install git
-	```
-
-### MacOS
-
-Recommended installation method for windows if you don't already have it:
-
-1.  Follow the [lab setup instructions for mac](https://ucd-eec172.github.io/labs/lab-setup.html#macos-catalina-or-later)
-    if you haven't already.
-
-1.  Install anything you don't have:
-	```console
-	$ brew install make
-	$ brew install pandoc
-	$ brew install git
-	```
 
 
 ## Acknowledgements
