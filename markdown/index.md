@@ -21,10 +21,6 @@ Zip files of our source code can be found
     <img src="./media/Image_001.jpg" style="width:2in;height:auto"/>
     <!-- <span class="caption"> </span> -->
   </div>
-  <div style="display: inline-block; vertical-align: bottom;">
-    <img src="./media/Image_002.jpg" style="width:auto;height:2in" />
-    <!-- <span class="caption"> </span> -->
-  </div>
 </div>
 
 <!-- 560 by 315 originally -->
@@ -43,7 +39,7 @@ Zip files of our source code can be found
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
   <div style="display:inline-block;vertical-align:top;flex:1 0 300px;">
-  The architecture diagram consists of 5 blocks each representing a component of the system. The main control unit is the CC3200 board which runs the written code and connects all the other components to eachother. All information is displayed on an OLED screen via SPI, which is connected to the MCU by 5 pins, power, and ground. User input is taken from both the CC3200\'s built in accelerometer through I2C, as well as the IR remote via a receiver that is built on a breadboard (See the implementation section for the circuit). Finally, AWS is called from the CC3200\'s code in order to email the user their final score.
+  The architecture diagram consists of 5 blocks each representing a component of the system. The main control unit is the CC3200 board which runs the written code and connects all the other components to eachother. All information is displayed on an OLED screen via SPI, which is connected to the MCU by 5 pins, power, and ground. User input is taken from both the CC3200's built in accelerometer through I2C, as well as the IR remote via a receiver that is built on a breadboard (See the implementation section for the circuit). Finally, AWS is called from the CC3200's code in order to email the user their final score.
   </div>
   <div style="display:inline-block;vertical-align:top;flex:0 0 500px">
     <div class="fig">
@@ -57,7 +53,7 @@ Zip files of our source code can be found
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
   <div style="display:inline-block;vertical-align:top;flex:1 0 400px;">
-  Our state machine consisted of four main states shown in grey. The idle state is called from main and contains the start screen. It waits until a user input begins the game, at which point it calls the initialization function and moves to the game loop state. The game loop contains one large function that loops every tick. Here, the move snake function polls the accelerometer and IR remote for any user input and handles movement, before moving to the collision detection function. If there is no collision, all changes are rendered to the display and the game loop restarts. If a collision is detected however, the game over state is called, and an ending screen is shown to the user along with their score. After the player acknowledges this, the leaderboard state is called and the user\'s score is emailed through AWS before returning to the idle screen state.
+  Our state machine consisted of four main states shown in grey. The idle state is called from main and contains the start screen. It waits until a user input begins the game, at which point it calls the initialization function and moves to the game loop state. The game loop contains one large function that loops every tick. Here, the move snake function polls the accelerometer and IR remote for any user input and handles movement, before moving to the collision detection function. If there is no collision, all changes are rendered to the display and the game loop restarts. If a collision is detected however, the game over state is called, and an ending screen is shown to the user along with their score. After the player acknowledges this, the leaderboard state is called and the user's score is emailed through AWS before returning to the idle screen state.
   </div>
   <div style="display:inline-block;vertical-align:top;flex:0 0 400px;">
     <div class="fig">
@@ -70,44 +66,35 @@ Zip files of our source code can be found
 # Implementation
 Our implementation consists of 4 main states, as well as containing many other important functions.
 
-The code begins with the main function that calls a function for hardware setup. All necessary initializations for modules such as the pin mux, systick, UART, etc should be done here, before calling the idle state. In addition, the hardware setup function is where our machine connects to the internet and calls Amazon\'s servers. We decided to do this because the process takes roughly 10 seconds, and we felt that it would be better to wait this out at the start rather than force the user to wait after the game ends where the downtime is more noticeable. 
+The code begins with the main function that calls a function for hardware setup. All necessary initializations for modules such as the pin mux, systick, UART, etc should be done here, before calling the idle state. In addition, the hardware setup function is where our machine connects to the internet and calls Amazon's servers. We decided to do this because the process takes roughly 10 seconds, and we felt that it would be better to wait this out at the start rather than force the user to wait after the game ends where the downtime is more noticeable. 
 
 ### Idle State
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 200px'>
-    This state consists of the start screen and game initialization. A function is called to show the title screen on the OLED, and waits until a user input before starting the game. Once the user has decided to continue, the game is initialized by resetting all relevant variables of the game to their default state, such as the snake\'s length, color, size, speed, and position, in addition to all necessary game flags and the tick counter. Once this is done, the game is ready to begin, and the main game loop is called.
-
-  </div>
-  <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
-    <div class="fig">
-      <img src="./media/Image_007.jpg" style="width:auto;height:2.5in" />
-      <span class="caption">Device Shadow JSON</span>
-    </div>
-  </div>
-</div>
+    This state consists of the start screen and game initialization. A function is called to show the title screen on the OLED, and waits until a user input before starting the game. Once the user has decided to continue, the game is initialized by resetting all relevant variables of the game to their default state, such as the snake's length, color, size, speed, and position, in addition to all necessary game flags and the tick counter. Once this is done, the game is ready to begin, and the main game loop is called.
 
 ### Game Loop State
-The main loop handles all game functionality. It begins by polling the accelerometer to adjust the snake\'s speed for the current tick and resetting the flag for if the snake has eaten.
+The main loop handles all game functionality. It begins by polling the accelerometer to adjust the snake's speed for the current tick and resetting the flag for if the snake has eaten.
 
 #### Checking if food is eaten
-The code checks if the snake has eaten by comparing the position of the food to the position of the snake\'s head. This is done by checking if the difference in the X and Y positions between the snake\'s head and the food is less than the size of the snake\'s head. If this is true, that means that the snake is touching the food, and should eat it. When this happens, the snake\'s color is updated and the food is moved to a new random position. A power up is also placed if none are on the board. Finally, the snake grows in size.
-The snake\'s color is updated by cycling through an array of predefined colors. The current color is stored as a global variable and is used any time the snake is printed onto the OLED screen. When it is time to update the color, the variable is simply changed to the next entry in the array.
+The code checks if the snake has eaten by comparing the position of the food to the position of the snake's head. This is done by checking if the difference in the X and Y positions between the snake's head and the food is less than the size of the snake's head. If this is true, that means that the snake is touching the food, and should eat it. When this happens, the snake's color is updated and the food is moved to a new random position. A power up is also placed if none are on the board. Finally, the snake grows in size.
+The snake's color is updated by cycling through an array of predefined colors. The current color is stored as a global variable and is used any time the snake is printed onto the OLED screen. When it is time to update the color, the variable is simply changed to the next entry in the array.
 The food is moved to a new position by filling the current space with the background color, and randomly selecting a new space for the next piece of food. The new piece is not drawn until the game renders at the end of the tick.
 Power ups are placed very similarly to food, by selecting a random position and waiting for the game to render.
 Adding a snake segment is done by moving to the tail of the current snake and adding a segment, as well as updating the counter so that the new segment is not removed at the end of the tick.
 Finally, a flag is set stating that the snake has eaten on this tick.
 
 #### Checking if a power up has been eaten
-This is done very similarly to the check for food. It compared the position of the power up to the position of the snake\'s head, and if they overlap then the size increase power up is activated. A flag is set noting that the power up is active, and the size of each snake segment is doubled. The duration of the power up is set to a predetermined constant, and the power up is removed from the screen by filling in the zone with the background color. This does not affect the snake as the renderer at the end of the tick will ensure that the snake is displayed properly.
+This is done very similarly to the check for food. It compared the position of the power up to the position of the snake's head, and if they overlap then the size increase power up is activated. A flag is set noting that the power up is active, and the size of each snake segment is doubled. The duration of the power up is set to a predetermined constant, and the power up is removed from the screen by filling in the zone with the background color. This does not affect the snake as the renderer at the end of the tick will ensure that the snake is displayed properly.
 
-If a power up is active, then the number of remaining ticks is decremented. When it hits 0, the snake\'s size returns to normal and the larger circles are filled with the background color by looping through every segment of the snake and filling them one by one. Once again, this does not affect the snake as it will be rendered again at the end of the tick.
+If a power up is active, then the number of remaining ticks is decremented. When it hits 0, the snake's size returns to normal and the larger circles are filled with the background color by looping through every segment of the snake and filling them one by one. Once again, this does not affect the snake as it will be rendered again at the end of the tick.
 
 #### Move the Snake
-This function polls the IR remote and changes the direction if necessary. Otherwise, it updates the speed of the snake\'s turn based on information from the accelerometer. The snake\'s position is updated by adding this speed value for both the X and Y axis to the position of the head. If the snake moves out of any of the borders, it is moved to the other side. Finally, a for loop is used to move all segments to the space occupied by the previous segment by iterating backwards from the tail of the snake through the front. The head of the snake is then set to the position calculated earlier when the speed was added to the head.
+This function polls the IR remote and changes the direction if necessary. Otherwise, it updates the speed of the snake's turn based on information from the accelerometer. The snake's position is updated by adding this speed value for both the X and Y axis to the position of the head. If the snake moves out of any of the borders, it is moved to the other side. Finally, a for loop is used to move all segments to the space occupied by the previous segment by iterating backwards from the tail of the snake through the front. The head of the snake is then set to the position calculated earlier when the speed was added to the head.
 
 #### Detect Collisions
-Collisions are detected by looping through all snake segments after the third and checking if that segment overlaps with the head, in the same way that food and power ups were checked. Because the second segment touches the head often, it is excluded from collision checks. The third segment is also omitted because the size power up can cause it to touch the head while turning. This does not affect gameplay because it is impossible to get the snake\'s head to touch the third segment legitimately. When a collision is detected, the game over state is called.
+Collisions are detected by looping through all snake segments after the third and checking if that segment overlaps with the head, in the same way that food and power ups were checked. Because the second segment touches the head often, it is excluded from collision checks. The third segment is also omitted because the size power up can cause it to touch the head while turning. This does not affect gameplay because it is impossible to get the snake's head to touch the third segment legitimately. When a collision is detected, the game over state is called.
 
 #### Render Changes
 The renderer draws all changes on screen. It begins by drawing the food and power up at their current positions. If either is already on the board, this is unnoticeable, but if either one was eaten, then a new one is drawn at this time.
@@ -121,8 +108,8 @@ Next, the snake is drawn by looping through each segment and drawing it, as the 
   </div>
   <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
     <div class="fig">
-      <img src="./media/Image_008.jpg" style="width:auto;height:2in" />
-      <span class="caption">OLED Wiring Diagram</span>
+      <img src="./media/Image_008.jpg" style="width:auto;height:4in" />
+      <span class="caption">Game Over Screen</span>
     </div>
   </div>
 </div>
@@ -131,12 +118,12 @@ Next, the snake is drawn by looping through each segment and drawing it, as the 
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
-    While this state is called the leaderboard state, this is simply an artifact from earlier in the project before changes were made due to limitations of the board and C that make it extremely difficult to properly parse a JSON, which is necessary to store a leaderboard through AWS. As such, the functionality of this state was changed to instead email the user their score via AWS. This is done by editing the user\'s score into a predefined JSON and sending a POST request through SimpleLink. Ensure that the device is already registered in AWS and that the proper credentials have been flashed onto the CC3200 board, otherwise this will not work.
+    While this state is called the leaderboard state, this is simply an artifact from earlier in the project before changes were made due to limitations of the board and C that make it extremely difficult to properly parse a JSON, which is necessary to store a leaderboard through AWS. As such, the functionality of this state was changed to instead email the user their score via AWS. This is done by editing the user's score into a predefined JSON and sending a POST request through SimpleLink. Ensure that the device is already registered in AWS and that the proper credentials have been flashed onto the CC3200 board, otherwise this will not work.
   </div>
   <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
     <div class="fig">
       <img src="./media/Image_009.jpg" style="width:auto;height:2in" />
-      <span class="caption">IR Receiver Wiring Diagram</span>
+      <span class="caption">AWS email</span>
     </div>
   </div>
 </div>
@@ -149,7 +136,7 @@ Next, the snake is drawn by looping through each segment and drawing it, as the 
   </div>
   <div style='display: inline-block; vertical-align: top;flex:1 0 600px'>
     <div class="fig">
-      <img src="./media/Image_012.jpg" style="width:auto;height:2in;padding-top:30px" />
+      <img src="./media/Image_012.jpg" style="width:auto;height:6in;padding-top:30px" />
       <span class="caption">Circuit on Breadboard</span>
     </div>
   </div>
@@ -157,7 +144,7 @@ Next, the snake is drawn by looping through each segment and drawing it, as the 
 
 # Challenges
 
-We faced a few major challenges during the implementation of our project. Notably, our code has a dependency on Part 3 from Lab 3 that we were unable to resolve, and we needed to change our AWS implementation from a leaderboard to an email of the player\'s game score.
+We faced a few major challenges during the implementation of our project. Notably, our code has a dependency on Part 3 from Lab 3 that we were unable to resolve, and we needed to change our AWS implementation from a leaderboard to an email of the player's game score.
 
 ## Dependency on Lab 3 Code for OLED Module Initialization
 
@@ -189,7 +176,7 @@ Currently, our snake can freely traverse the screen without any obstacles beside
 
 ## More Power Ups
 
-Given more time, we would have implemented more power-ups. Some particular power ups we planned on implementing are a speed boost that would temporarily increase the snake\'s speed, and a point multiplier that would add two segments to the snake when it eats food, instead of one.
+Given more time, we would have implemented more power-ups. Some particular power ups we planned on implementing are a speed boost that would temporarily increase the snake's speed, and a point multiplier that would add two segments to the snake when it eats food, instead of one.
 
 ## More Game Modes
 
