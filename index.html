@@ -41,8 +41,8 @@ piece of food that makes the snake much larger for a period, making it
 easier to get to food, while also increasing the risk of running into
 oneself. Upon the snake's death, a game over screen is displayed, and
 the user's score is sent to an email via AWS. The game then returns to
-the title screen and prompts the user to play again. <br/><br/> Zip
-files of our source code can be found <!-- replace this link -->
+the title screen and prompts the user to play again. <br/><br/> Our
+source code can be found <!-- replace this link -->
 <a href="https://github.com/RamiAbudamous/EEC172_Final"> here</a>.<br />
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;padding-top:20px"> <div style="display: inline-block; vertical-align: bottom;"> <img src="./media/Image_001.jpg" style="width:2in;height:auto"/> <!-- <span class="caption"> </span> --> </div> </div>
 <!-- 560 by 315 originally --> <h2>Video Demo</h2> <div style="text-align:center;margin:auto;max-width:560px"> <div style="padding-bottom:56.25%;position:relative;height:0;"> <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://www.youtube.com/embed/_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div> </div> 
@@ -76,9 +76,6 @@ id="toc-hardware-implementation">Hardware Implementation</a></li>
 <li><a href="#dependency-on-lab-3-code-for-oled-module-initialization"
 id="toc-dependency-on-lab-3-code-for-oled-module-initialization">Dependency
 on Lab 3 Code for OLED Module Initialization</a></li>
-<li><a href="#current-limitation-of-gpio-pins"
-id="toc-current-limitation-of-gpio-pins">Current Limitation of GPIO
-Pins</a></li>
 <li><a href="#modification-of-leaderboard-implementation"
 id="toc-modification-of-leaderboard-implementation">Modification of
 Leaderboard Implementation</a></li>
@@ -275,13 +272,6 @@ attempts to isolate it were unsuccessful and ultimately prevented us
 from being able to flash the final program onto our CC3200s. Hence, this
 dependency was unexpected and led to a limitation where our project
 could not meet the standalone operational requirement.</p>
-<h2 id="current-limitation-of-gpio-pins">Current Limitation of GPIO
-Pins</h2>
-<p>Our next idea was to try using the GPIO pins to power the probe,
-since we can turn it off when not needed, preventing excessive
-polarization. However, the GPIO pins are current limited, and any
-control circuit with a transistor would introduce extra voltage drops.
-Therefore, the simple two-probe implementation was not feasible.</p>
 <h2 id="modification-of-leaderboard-implementation">Modification of
 Leaderboard Implementation</h2>
 <p>Originally, we aimed to implement an AWS-based leaderboard that would
