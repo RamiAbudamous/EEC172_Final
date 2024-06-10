@@ -11,7 +11,7 @@ toc-title: 'Table of Contents'
 abstract-title: '<h2>Description</h2>'
 abstract: 'We decided to create a game of snake for our project as early as lab two because we noticed that the moving ball from lab 2 was similar to how a snake moves, and we thought that the accelerometer would be an interesting control mechanism for snake compared to the traditional directional inputs. When it came time to implement our design, we also included directional inputs via the IR remote, as we felt that giving the player the option to choose their method of control would make the game more enjoyable, in addition to meeting the project requirements. The game begins with a title screen that prompts the user to start. The main gameplay loop consists of a snake that can move around the screen, seeking to eat food. Eating  piece of food increases the size of the snake and places a new piece of food on the board. The snake dies when it runs into itself, but can move into one end of the border and appear from the other side. We also implemented power ups to further differentiate our game from the traditional snake game, with a special piece of food that makes the snake much larger for a period, making it easier to get to food, while also increasing the risk of running into oneself. Upon the snake''s death, a game over screen is displayed, and the user''s score is sent to an email via AWS. The game then returns to the title screen and prompts the user to play again.
 <br/><br/>
-Zip files of our source code can be found 
+Our source code can be found 
 <!-- replace this link -->
 <a href="https://github.com/RamiAbudamous/EEC172_Final">
   here</a>.
