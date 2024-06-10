@@ -1,0 +1,1 @@
+Endpoint: https://a278cc77ewa84-ats.iot.us-east-1.amazonaws.com/things/Mihika_CC3200_Board/shadow
