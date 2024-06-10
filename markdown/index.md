@@ -27,7 +27,7 @@ Zip files of our source code can be found
 <h2>Video Demo</h2>
 <div style="text-align:center;margin:auto;max-width:560px">
   <div style="padding-bottom:56.25%;position:relative;height:0;">
-    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://www.youtube.com/watch?v=_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://www.youtube.com/embed/_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 </div>
 '
@@ -149,14 +149,6 @@ We faced a few major challenges during the implementation of our project. Notabl
 ## Dependency on Lab 3 Code for OLED Module Initialization
 
 We faced a puzzling issue where we needed to run our code from Lab 3 in order to activate and work with the OLED display. Only after running this code would our OLED turn on for this final project. Depsite using the exact same code from lab 3 in our final code for this project, we could not debug this issue. After hours of debugging the dependency, our attempts to isolate it were unsuccessful and ultimately prevented us from being able to flash the final program onto our CC3200s. Hence, this dependency was unexpected and led to a limitation where our project could not meet the standalone operational requirement.
-
-## Current Limitation of GPIO Pins
-
-Our next idea was to try using the GPIO pins to power the probe, since
-we can turn it off when not needed, preventing excessive polarization.
-However, the GPIO pins are current limited, and any control circuit with
-a transistor would introduce extra voltage drops. Therefore, the simple
-two-probe implementation was not feasible.
 
 ## Modification of Leaderboard Implementation
 
