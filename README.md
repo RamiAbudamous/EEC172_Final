@@ -1,23 +1,8 @@
 # EEC 172 Final Project Website
 
-> test
-test
-
+## Snake (if it was good)
 It is live [here](https://ramiabudamous.github.io/EEC172_Final/).
-
-
-## test
-
-After the software dependencies are installed, and you've written the page's
-content in markdown, you can build the webpage by simply invoking `make` 
-in your terminal at the top level of the repository.
-
-### test
-
-### Publishing to GitHub Pages
-
-You can make your repository publish itself automatically by following 
-[these instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
+Source code can be found in the source code folder
 
 ## Acknowledgements
 
