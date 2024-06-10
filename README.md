@@ -1,8 +1,9 @@
 # EEC 172 Final Project Website
 
 ## Snake (if it was good)
-It is live [here](https://ramiabudamous.github.io/EEC172_Final/).
-Source code can be found in the source code folder
+The website is live [here](https://ramiabudamous.github.io/EEC172_Final/).
+
+Our source code can be found in the source code folder.
 
 ## Acknowledgements
 
