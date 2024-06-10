@@ -1,38 +1,24 @@
 ---
-title: 'Snake Game: Update this title'
+title: 'Snake (if it was good)'
 author: '**Rami Abudamous and Mihika Krishna** (website template by Ryan Tsang)'
-date: '*EEC172 SQ24 TEST*'
+date: 'EEC172 SQ24'
 
-subtitle: '<blockquote><b>EEC172 Final Project Webpage Example</b><br/>
-Note to current students: this is an <i>example</i> webpage and
-may not fulfill all stated requirements of the current quarter''s 
-assignment.<br/>The website source is hosted 
-<a href="https://github.com/ucd-eec172/project-website-example">on github</a>.
+subtitle: '<blockquote>The website source is hosted 
+<a href="https://github.com/RamiAbudamous/EEC172_Final">on github</a>.
 </blockquote>'
 
 toc-title: 'Table of Contents'
 abstract-title: '<h2>Description</h2>'
-abstract: 'Hydroponics is a technique where plants are grown in a nutrient-rich
-solution. This soil- free technique has been gaining traction recently
-due to its ability to optimize resource utilization. However, since
-plants are highly sensitive to changes in TDS, hydroponic setups require
-continuous TDS monitoring and adjustment. NutriSense, our device, allows
-hobbyists to achieve ideal hydroponics results on a small scale. It
-continuously monitors TDS and temperature, allowing the user to remotely
-read the status over AWS IoT cloud. The user can remotely enter upper
-and lower thresholds for TDS, and the device will automatically add
-nutrient solution or water to keep the TDS bounded by the thresholds.
-The device can also be configured to send notifications over SNS when
-the TDS value goes outside thresholds.
+abstract: 'We decided to create a game of snake for our project as early as lab two because we noticed that the moving ball from lab 2 was similar to how a snake moves, and we thought that the accelerometer would be an interesting control mechanism for snake compared to the traditional directional inputs. When it came time to implement our design, we also included directional inputs via the IR remote, as we felt that giving the player the option to choose their method of control would make the game more enjoyable, in addition to meeting the project requirements. The game begins with a title screen that prompts the user to start. The main gameplay loop consists of a snake that can move around the screen, seeking to eat food. Eating  piece of food increases the size of the snake and places a new piece of food on the board. The snake dies when it runs into itself, but can move into one end of the border and appear from the other side. We also implemented power ups to further differentiate our game from the traditional snake game, with a special piece of food that makes the snake much larger for a period, making it easier to get to food, while also increasing the risk of running into oneself. Upon the snake's death, a game over screen is displayed, and the user's score is sent to an email via AWS. The game then returns to the title screen and prompts the user to play again.
 <br/><br/>
-Our source code can be found 
+Zip files of our source code can be found 
 <!-- replace this link -->
-<a href="https://github.com/ucd-eec172/project-website-example">
-  here (placeholder)</a>.
+<a href="https://github.com/RamiAbudamous/EEC172_Final">
+  here</a>.
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;padding-top:20px">
   <div style="display: inline-block; vertical-align: bottom;">
-    <img src="./media/Image_001.jpg" style="width:auto;height:2in"/>
+    <img src="./media/Image_001.jpg" style="width:2in;height:auto"/>
     <!-- <span class="caption"> </span> -->
   </div>
   <div style="display: inline-block; vertical-align: bottom;">
@@ -41,104 +27,23 @@ Our source code can be found
   </div>
 </div>
 
+<!-- 560 by 315 originally -->
 <h2>Video Demo</h2>
 <div style="text-align:center;margin:auto;max-width:560px">
   <div style="padding-bottom:56.25%;position:relative;height:0;">
-    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="560" height="315" src="https://www.youtube.com/embed/wSRtnAEZhmc?si=3vQXNj4h0WkW-F-q" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://youtu.be/_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 </div>
 '
 ---
-
-# Market Survey
-
-There are two types of similar product on the market. The first one is
-products from AeroGarden. Their products allow users to grow plants in
-nutrient solutions in a limited amount of usually 5 to 10. Compared with
-this product, our product provides an automated system for nutrient
-control that ensures the plant always has the correct amount of
-nutrients needed to avoid excess or insufficient nutrients. The other
-product is an expensive commercial system for horticulture aiming for a
-large scale of growth. Compared with this one, our product has the
-advantage of being cheap and small-scale which is more suitable for
-individual hobbyists to explore hydroponics.
-
-<div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
-  <div style='display: inline-block; vertical-align: top;'>
-    <img src="./media/Image_003.jpg" style="width:auto;height:200"/>
-    <span class="caption">
-      <a href="https://aerogarden.com/gardens/harvest-family/Harvest-2.0.html">AeroGarden Harvest 2.0</a>
-      <ul style="text-align:left;">
-      <li>Inexpensive ($90)</li>
-      <li>Not Automated</li>
-      <li>Small Scale</li>
-      <li>No remote monitoring</li>
-    </ul>
-    </span>
-  </div>
-  <div style='display: inline-block; vertical-align: top;'>
-    <img src="./media/Image_004.jpg" style="width:auto;height:200" />
-    <span class="caption">
-      <a href="https://www.hydroexperts.com.au/Autogrow-MultiGrow-Controller-All-In-One-Controller-8-Growing-Zones">Autogrow Multigrow</a>
-      <ul style="text-align:left;">
-      <li>Expensive ($4500)</li>
-      <li>Fully Automated</li>
-      <li>Huge Scale</li>
-      <li>Cloud monitoring</li>
-    </ul>
-    </span>
-  </div>
-</div>
 
 # Design
 
 ## System Architecture
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
-  <div style="display:inline-block;vertical-align:top;flex:1 0 400px;">
-    As shown in the system flowchart, we use one of the CC3200 boards for
-    the closed feedback loop for maintaining concentration in the
-    environment. The board will read values with I2C protocol through an ADC
-    which reads values from the thermistor and the TDS meter sensor. The
-    board will also periodically read user-defined thresholds from the AWS
-    cloud using RESTful APIs. When the sensory values read outside of the
-    user-defined thresholds, the board will activate the motor control
-    function to pump either water or nutrient solution to bring the
-    concentration back within the thresholds. Meanwhile, another CC3200
-    board is frequently reading from the AWS cloud to present the current
-    TDS reading and user-defined threshold to the user on an OLED through
-    SPI protocols. To adjust the thresholds, the user can either do it
-    remotely or locally by using a TV remote to type the number into the IR
-    receiver. The adjustments will be updated to the AWS and if the user
-    updates remotely, the local CC3200 board will update the values in the
-    next synchronization.
-  </div>
-  <div style="display:inline-block;vertical-align:top;flex:0 0 400px;">
-    <div class="fig">
-      <img src="./media/Image_005.jpg" style="width:90%;height:auto;" />
-      <span class="caption">System Flowchart</span>
-    </div>
-  </div>
-</div>
-
-## Functional Specification
-
-<div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
   <div style="display:inline-block;vertical-align:top;flex:1 0 300px;">
-    Our system works based on the following state diagram. The device will
-    periodically monitor the temperature and the electrical conductivity
-    (EC) of the solution and convert the values into a TDS value using a
-    calibration curve. At the same time, the device will check for threshold
-    inputs, both over the AWS shadow and via manual input on the IR
-    receiver. It will compare the TDS with the lower and upper thresholds
-    set by the user. If the value is within the thresholds, it will stay in
-    the rest state. If the TDS is higher than the upper thresholds, it will
-    go to the water state and activate the water pump until the PPM is lower
-    than the upper thresholds and go back to the rest state. If the PPM is
-    lower than the lower thresholds, it will go to the nutrient state and
-    activate the nutrient pump until the PPM is higher than the lower
-    thresholds and go back to the rest state. In each state, the device will
-    periodically post the TDS.
+  The architecture diagram consists of 5 blocks each representing a component of the system. The main control unit is the CC3200 board which runs the written code and connects all the other components to eachother. All information is displayed on an OLED screen via SPI, which is connected to the MCU by 5 pins, power, and ground. User input is taken from both the CC3200's built in accelerometer through I2C, as well as the IR remote via a receiver that is built on a breadboard (See the implementation section for the circuit). Finally, AWS is called from the CC3200's code in order to email the user their final score.
   </div>
   <div style="display:inline-block;vertical-align:top;flex:0 0 500px">
     <div class="fig">
@@ -148,36 +53,31 @@ individual hobbyists to explore hydroponics.
   </div>
 </div>
 
+## Functional Specification
+
+<div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
+  <div style="display:inline-block;vertical-align:top;flex:1 0 400px;">
+  Our state machine consisted of four main states shown in grey. The idle state is called from main and contains the start screen. It waits until a user input begins the game, at which point it calls the initialization function and moves to the game loop state. The game loop contains one large function that loops every tick. Here, the move snake function polls the accelerometer and IR remote for any user input and handles movement, before moving to the collision detection function. If there is no collision, all changes are rendered to the display and the game loop restarts. If a collision is detected however, the game over state is called, and an ending screen is shown to the user along with their score. After the player acknowledges this, the leaderboard state is called and the user's score is emailed through AWS before returning to the idle screen state.
+  </div>
+  <div style="display:inline-block;vertical-align:top;flex:0 0 400px;">
+    <div class="fig">
+      <img src="./media/Image_005.jpg" style="width:90%;height:auto;" />
+      <span class="caption">Function Diagram</span>
+    </div>
+  </div>
+</div>
+
 # Implementation
+Our implementation consists of 4 main states, as well as containing many other important functions.
 
-### CC3200-LAUNCHXL Evaluation Board
+The code begins with the main function that calls a function for hardware setup. All necessary initializations for modules such as the pin mux, systick, UART, etc should be done here, before calling the idle state. In addition, the hardware setup function is where our machine connects to the internet and calls Amazon's servers. We decided to do this because the process takes roughly 10 seconds, and we felt that it would be better to wait this out at the start rather than force the user to wait after the game ends where the downtime is more noticeable. 
 
-All control and logic was handled by two CC3200 microcontroller units,
-one each for the Master and Slave device. On the master device, it was
-responsible for decoding IR inputs from the remote to allow the user to
-input thresholds to be sent over AWS. The board’s SPI functionality,
-using the TI SPI library, was used to interface with the OLED display.
-The MCU is WiFi enabled, allowing a remote connection between the two
-boards.
-
-On the slave device, the microcontroller was responsible for the same
-functionalities as above, in addition to the TDS reading and control.
-This includes interfacing with the ADC over the I2C bus, reading 
-thresholds over HTTP from the AWS device shadow, writing the reported 
-TDS to the device shadow, and activating the two pumps using the 
-BJT control circuit.
-
-## Functional Blocks: Master
-
-### AWS IoT Core
+### Idle State
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 200px'>
-    The AWS IoT core allows our devices to communicate with each other
-    asynchronously. The master device can update the desired thresholds, and
-    the slave device will read them and synchronize them to the reported
-    state. The slave device will also post the TDS and temperature readings
-    periodically.
+    This state consists of the start screen and game initialization. A function is called to show the title screen on the OLED, and waits until a user input before starting the game. Once the user has decided to continue, the game is initialized by resetting all relevant variables of the game to their default state, such as the snake's length, color, size, speed, and position, in addition to all necessary game flags and the tick counter. Once this is done, the game is ready to begin, and the main game loop is called.
+
   </div>
   <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
     <div class="fig">
@@ -187,14 +87,30 @@ BJT control circuit.
   </div>
 </div>
 
-### OLED Display
+### Game Loop State
+The main loop handles all game functionality. It begins by polling the accelerometer to adjust the snake's speed for the current tick and resetting the flag for if the snake has eaten.
+
+#### Checking if food is eaten
+
+
+#### Checking if a power up has been eaten
+
+
+#### Move the Snake
+
+
+#### Detect Collisions
+
+
+
+#### Render Changes
+
+
+### Game Over State
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
-    On both Master and Slave devices, the user can view the current TDS and
-    temperature of the plant solution on an OLED display. The user can also
-    use the display to view and edit the TDS thresholds. The CC3200 uses the
-    SPI bus to communicate with the display module.
+    Once a collision has been detected, the game immediately ends and the user is shown a game over screen containing their score and an input prompt to continue. Once the input has been received, the leaderboard state is called.
   </div>
   <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
     <div class="fig">
