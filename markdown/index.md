@@ -27,7 +27,7 @@ Zip files of our source code can be found
 <h2>Video Demo</h2>
 <div style="text-align:center;margin:auto;max-width:560px">
   <div style="padding-bottom:56.25%;position:relative;height:0;">
-    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://youtu.be/_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe style="left:0;top:0;width:100%;height:100%;position:absolute;" width="auto" height="auto" src="https://www.youtube.com/watch?v=_4U2e4Hofy8" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 </div>
 '
@@ -38,10 +38,10 @@ Zip files of our source code can be found
 ## System Architecture
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-evenly;">
-  <div style="display:inline-block;vertical-align:top;flex:1 0 300px;">
+  <div style="display:inline-block;vertical-align:top;flex:1 0 400px;">
   The architecture diagram consists of 5 blocks each representing a component of the system. The main control unit is the CC3200 board which runs the written code and connects all the other components to eachother. All information is displayed on an OLED screen via SPI, which is connected to the MCU by 5 pins, power, and ground. User input is taken from both the CC3200's built in accelerometer through I2C, as well as the IR remote via a receiver that is built on a breadboard (See the implementation section for the circuit). Finally, AWS is called from the CC3200's code in order to email the user their final score.
   </div>
-  <div style="display:inline-block;vertical-align:top;flex:0 0 500px">
+  <div style="display:inline-block;vertical-align:top;flex:0 0 400px">
     <div class="fig">
       <img src="./media/Image_006.jpg" style="width:90%;height:auto;" />
       <span class="caption">State Diagram</span>
@@ -108,7 +108,7 @@ Next, the snake is drawn by looping through each segment and drawing it, as the 
   </div>
   <div style='display: inline-block; vertical-align: top;flex:0 0 400px'>
     <div class="fig">
-      <img src="./media/Image_008.jpg" style="width:auto;height:4in" />
+      <img src="./media/Image_008.jpg" style="width:auto;height:3in" />
       <span class="caption">Game Over Screen</span>
     </div>
   </div>
