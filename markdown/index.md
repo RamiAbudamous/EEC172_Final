@@ -91,20 +91,27 @@ The code begins with the main function that calls a function for hardware setup.
 The main loop handles all game functionality. It begins by polling the accelerometer to adjust the snake's speed for the current tick and resetting the flag for if the snake has eaten.
 
 #### Checking if food is eaten
-
+The code checks if the snake has eaten by comparing the position of the food to the position of the snake's head. This is done by checking if the difference in the X and Y positions between the snake's head and the food is less than the size of the snake's head. If this is true, that means that the snake is touching the food, and should eat it. When this happens, the snake's color is updated and the food is moved to a new random position. A power up is also placed if none are on the board. Finally, the snake grows in size.
+The snake's color is updated by cycling through an array of predefined colors. The current color is stored as a global variable and is used any time the snake is printed onto the OLED screen. When it is time to update the color, the variable is simply changed to the next entry in the array.
+The food is moved to a new position by filling the current space with the background color, and randomly selecting a new space for the next piece of food. The new piece is not drawn until the game renders at the end of the tick.
+Power ups are placed very similarly to food, by selecting a random position and waiting for the game to render.
+Adding a snake segment is done by moving to the tail of the current snake and adding a segment, as well as updating the counter so that the new segment is not removed at the end of the tick.
+Finally, a flag is set stating that the snake has eaten on this tick.
 
 #### Checking if a power up has been eaten
+This is done very similarly to the check for food. It compared the position of the power up to the position of the snake's head, and if they overlap then the size increase power up is activated. A flag is set noting that the power up is active, and the size of each snake segment is doubled. The duration of the power up is set to a predetermined constant, and the power up is removed from the screen by filling in the zone with the background color. This does not affect the snake as the renderer at the end of the tick will ensure that the snake is displayed properly.
 
+If a power up is active, then the number of remaining ticks is decremented. When it hits 0, the snake's size returns to normal and the larger circles are filled with the background color by looping through every segment of the snake and filling them one by one. Once again, this does not affect the snake as it will be rendered again at the end of the tick.
 
 #### Move the Snake
-
+This function polls the IR remote and changes the direction if necessary. Otherwise, it updates the speed of the snake's turn based on information from the accelerometer. The snake's position is updated by adding this speed value for both the X and Y axis to the position of the head. If the snake moves out of any of the borders, it is moved to the other side. Finally, a for loop is used to move all segments to the space occupied by the previous segment by iterating backwards from the tail of the snake through the front. The head of the snake is then set to the position calculated earlier when the speed was added to the head.
 
 #### Detect Collisions
-
-
+Collisions are detected by looping through all snake segments after the third and checking if that segment overlaps with the head, in the same way that food and power ups were checked. Because the second segment touches the head often, it is excluded from collision checks. The third segment is also omitted because the size power up can cause it to touch the head while turning. This does not affect gameplay because it is impossible to get the snake's head to touch the third segment legitimately. When a collision is detected, the game over state is called.
 
 #### Render Changes
-
+The renderer draws all changes on screen. It begins by drawing the food and power up at their current positions. If either is already on the board, this is unnoticeable, but if either one was eaten, then a new one is drawn at this time.
+Next, the snake is drawn by looping through each segment and drawing it, as the positions have been recently updated by the moveSnake() function. Despite most of the segments being in the same position as the former segment was on the previous tick, they must all be redrawn so that a color change can happen when needed. After the segments have been moved, the previous tail segment must be filled in with the background color in order to prevent a visual artifact from showing.
 
 ### Game Over State
 
@@ -120,7 +127,7 @@ The main loop handles all game functionality. It begins by polling the accelerom
   </div>
 </div>
 
-### IR Receiver
+### AWS Email
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
@@ -141,73 +148,16 @@ The main loop handles all game functionality. It begins by polling the accelerom
   </div>
 </div>
 
-## Functional Blocks: Slave
-
-The slave device contains all the functional blocks from the master
-device, plus the following:
-
-### Analog-To-Digital Converter (ADC) Board
-
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
-  <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
-    The outputs from the thermistor and TDS sensor board are
-    in the form of analog voltages, which need to be converted to digital
-    values to be usable in our program. We chose the AD1015 breakout board
-    from Adafruit, which sports 4-channels and 12 bits of precision. We
-    ended up using only 2 channels, so there is a potential for even more
-    cost savings. The ADC board supports I2C communication, which we can use
-    to request and read the two channel voltages. 
-    The <a href="https://cdn-shop.adafruit.com/datasheets/ads1015.pdf">
-    product datasheet</a> contains the necessary configuration values
-    and register addresses for operation.
-  </div>
-  <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
-    <div class="fig">
-      <img src="./media/Image_010.jpg" style="width:auto;height:2in" />
-      <span class="caption">ADC Wiring Diagram</span>
-    </div>
-  </div>
-</div>
-
-### Thermistor
-
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
-  <div style='display: inline-block; vertical-align: top;flex:1 0 300px;'>
-    Conductivity-based TDS measurements are sensitive to temperature. To
-    allow accurate TDS measurements in a variety of climates and seasons,
-    temperature compensation calculations must be performed. To measure the
-    temperature, we use an NTC thermistor connected in a voltage divider
-    with a 10k resistor. The voltage across the resistor is read by the ADC
-    and converted to temperature using the equation provided by the
-    thermistor datasheet.
-  </div>
-  <div style='display: inline-block; vertical-align: top;flex:1 0 400px'>
-    <div class="fig">
-      <img src="./media/Image_011.jpg" style="width:auto;height:2in" />
-      <span class="caption">Thermistor Circuit Diagram</span>
-    </div>
-  </div>
-</div>
-
-### TDS Sensor Board
+### Hardware Implementation
 
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;">
   <div style='display: inline-block; vertical-align: top;flex:1 0 500px'>
-    In our first attempt to measure TDS, we used a simple two-probe analog
-    setup with a voltage divider. We soon found out that this was a naïve
-    approach (see Challenges). Consequently, we acquired a specialty TDS
-    sensing board from CQRobot, which generates a sinusoidal pulse and
-    measures the voltage drop to give a highly precise voltage to the ADC.
-    The MCU can then convert this voltage to a TDS value using the equation
-    provided by the device datasheet. We calibrated the TDS readings using a
-    standalone TDS sensor pen. After calibration and setting up the curves
-    for temperature compensation, we were able to achieve TDS readings
-    accurate to within 5% of the TDS sensor pen.
+  A breadboard is required to implement the necessary circuit for the IR receiver, as well as to connect the OLED to the CC3200 board. This is how we built it:
   </div>
   <div style='display: inline-block; vertical-align: top;flex:1 0 600px'>
     <div class="fig">
       <img src="./media/Image_012.jpg" style="width:auto;height:2in;padding-top:30px" />
-      <span class="caption">TDS Sensor Wiring Diagram</span>
+      <span class="caption">Circuit on Breadboard</span>
     </div>
   </div>
 </div>
@@ -237,22 +187,11 @@ device, plus the following:
 
 # Challenges
 
-The most significant challenge we faced while developing this prototype
-was of inaccurate and inconsistent Electrical Conductivity (EC)
-measurements. This occurred due to two reasons: probe channel
-polarization and current limitations of GPIO pins.
+We faced a few major challenges during the implementation of our project. Notably, our code has a dependency on Part 3 from Lab 3 that we were unable to resolve, and we needed to change our AWS implementation from a leaderboard to an email of the player's game score.
 
-## Probe Channel Polarization
+## Dependency on Lab 3 Code for OLED Module Initialization
 
-Our first design for the probe was simply two copper rods, which would
-add as electrodes. This probe would be connected in series with a
-1000-ohm resistor to act as a voltage divider. We would simply connect
-the probe to VCC and measure the voltage divider through the ADC,
-allowing us to calculate the EC. However, when we used the probe for a
-few minutes, we realized that the EC value would continue to rise. This
-is because the DC current causes an ionized channel to build up between
-the two electrodes in the water. This cause inconsistent EC readings as
-time goes on.
+We faced a puzzling issue where we needed to run our code from Lab 3 in order to activate and work with the OLED display. Only after running this code would our OLED turn on for this final project. Depsite using the exact same code from lab 3 in our final code for this project, we could not debug this issue. After hours of debugging the dependency, our attempts to isolate it were unsuccessful and ultimately prevented us from being able to flash the final program onto our CC3200s. Hence, this dependency was unexpected and led to a limitation where our project could not meet the standalone operational requirement.
 
 ## Current Limitation of GPIO Pins
 
@@ -262,25 +201,29 @@ However, the GPIO pins are current limited, and any control circuit with
 a transistor would introduce extra voltage drops. Therefore, the simple
 two-probe implementation was not feasible.
 
-## Solution to Challenges
+## Modification of Leaderboard Implementation
 
-We realized that using DC current to measure EC was not feasible.
-Therefore, we purchased a standalone EC measurement board from CQRobot.
-This inexpensive solution (\$8) used a low-voltage, low-current AC
-signal to prevent polarization. The board would convert the AC voltage
-drop across the solution to a DC analog voltage, which would then be
-read by our ADC. After calibrating the setup using a commercial TDS pen,
-the results were accurate within 3%, and would not drift by more than
-0.5% over time.
+Originally, we aimed to implement an AWS-based leaderboard that would dynamically display user scores using server-side JSON. However, we faced issues in integrating and manipulating JSON within our code, despite attempting to use numerous libraries such as cJSON, json-c, jsmn, and tiny-json. Given these technical obstacles and time constraints, we instead chose to modify the leaderboard implementation, and opted to email the final score to the player instead. This change ultimately worked out, but moved away from the interactive and real-time competition aspect that we initially aimed for.
 
 # Future Work
 
-Given more time, we had the idea of developing a web app to allow users
-to control the device from their cell phone. Another idea we wanted to
-implement in the future is adding a grow light and pH controller to
-maintain a more suitable and stable environment for different plants to
-grow.
+Despite completing all our basic and target goals with some modifications, there were some features we had in mind that we would have liked to implement.
 
+## Advanced Leaderboard Integration
+
+One of our target goals was to successfully implement an AWS-based real-time leaderboard. If we had more time, we would iron out our issues with one of the JSON libraries and ensure its integration with our game. Because more common libraries such as cJSON were too big for us to use, the go-to choice would likely be tiny-json if we had the time to learn how to use it.
+
+## Incorporation of Obstacles (Walls)
+
+Currently, our snake can freely traverse the screen without any obstacles besides its own tail. To add complexity to our gameplay, we would have liked to implement walls that the snake would have to maneuver around to avoid collision. Some ideas for implementing this would be adding wall segments as a possible outcome from a power up, or by adding a wall segment whenever food is eaten.
+
+## More Power Ups
+
+Given more time, we would have implemented more power-ups. Some particular power ups we planned on implementing are a speed boost that would temporarily increase the snake's speed, and a point multiplier that would add two segments to the snake when it eats food, instead of one.
+
+## More Game Modes
+
+Given more time, we would have implemented game modes other than classic snake, such as time trial mode where players must score as many points as possible within the time limit and survival mode where the game introduces more obstacles over time which the player must avoid to survive as long as possible.
 
 # Finalized BOM
 
