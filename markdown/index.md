@@ -187,198 +187,79 @@ Given more time, we would have implemented game modes other than classic snake, 
 <!-- you can convert google sheet cells to html for free using a converter
   like https://tabletomarkdown.com/convert-spreadsheet-to-html/ -->
 
-<table style="border-collapse:collapse;">
-<thead>
-  <tr>
-    <th><p>No.</p></th>
-    <th><p>PART NAME</p></th>
-    <th><p>DESCRIPTION</p></th>
-    <th><p>Qty</p></th>
-    <th><p>SUPPLIER / MANUFACTURER</p></th>
-    <th><p>UNIT COST</p></th>
-    <th><p>TOTAL PART COST</p></th>
-    <th><p>Purpose</p></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><p>1</p></td>
-    <td><p>CC3200-LAUNCHXL</p></td>
-    <td><p>MCU Evaluation Board</p></td>
-    <td><p>2</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$66.00</p></td>
-    <td><p>$132.00</p></td>
-    <td><p>Control Remote and Local Devices</p></td>
-  </tr>
-  <tr>
-    <td><p>2</p></td>
-    <td><p>Adafruit 1431 OLED</p></td>
-    <td><p>128x128 RGB OLED Display. SPI protocol</p></td>
-    <td><p>2</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$39.95</p></td>
-    <td><p>$79.90</p></td>
-    <td><p>Display PPM, Temperature, Thresholds, Inputs</p></td>
-  </tr>
-  <tr>
-    <td><p>3</p></td>
-    <td><p>Adafruit 4547 3VDC Pump</p></td>
-    <td><p>Submersible pump. 3V 100mA DC</p></td>
-    <td><p>2</p></td>
-    <td><p>Adafruit</p></td>
-    <td><p>$2.95</p></td>
-    <td><p>$5.90</p></td>
-    <td><p>For dispensing water and nutrient solution</p></td>
-  </tr>
-  <tr>
-    <td><p>4</p></td>
-    <td><p>Adafruit 4545 6mm Tube</p></td>
-    <td><p>6mm Silicone Tube: 1 meter length</p></td>
-    <td><p>1</p></td>
-    <td><p>Adafruit</p></td>
-    <td><p>$1.50</p></td>
-    <td><p>$1.50</p></td>
-    <td><p>For dispensing water and nutrient solution</p></td>
-  </tr>
-  <tr>
-    <td><p>5</p></td>
-    <td><p>NTC Thermistor 10k</p></td>
-    <td><p>10k ohm nominal resistance, 100cm lead</p></td>
-    <td><p>1</p></td>
-    <td><p>(Already had one, available on Aliexpress)</p></td>
-    <td><p>$0.92</p></td>
-    <td><p>$0.92</p></td>
-    <td><p>For temperature compensation</p></td>
-  </tr>
-  <tr>
-    <td><p>6</p></td>
-    <td><p>Adafruit AD1015 12-bit ADC</p></td>
-    <td><p>12-bit resolution, 4 channels, I2C</p></td>
-    <td><p>1</p></td>
-    <td><p>Adafruit</p></td>
-    <td><p>$9.95</p></td>
-    <td><p>$9.95</p></td>
-    <td><p>To convert Thermistor and TDS sensor reading to digital</p></td>
-  </tr>
-  <tr>
-    <td><p>7</p></td>
-    <td><p>PN2222A Transistor</p></td>
-    <td><p>NPN BJT (40V, 1000mA)</p></td>
-    <td><p>2</p></td>
-    <td><p>Digikey (onSemi)</p></td>
-    <td><p>$0.40</p></td>
-    <td><p>$0.80</p></td>
-    <td><p>For digital motor control</p></td>
-  </tr>
-  <tr>
-    <td><p>8</p></td>
-    <td><p>1N4001 Rectifier Diode</p></td>
-    <td><p>Diffused junction: 50V 1000mA</p></td>
-    <td><p>2</p></td>
-    <td><p>Digikey (Good-Ark Semi)</p></td>
-    <td><p>$0.16</p></td>
-    <td><p>$0.32</p></td>
-    <td><p>Reverse Current Protection</p></td>
-  </tr>
-  <tr>
-    <td><p>9</p></td>
-    <td><p>10k ohm resistor</p></td>
-    <td><p>10k ohm , 1% tolerance, 0.25W</p></td>
-    <td><p>1</p></td>
-    <td><p>Digikey (Stackpole Electronics)</p></td>
-    <td><p>$0.10</p></td>
-    <td><p>$0.10</p></td>
-    <td><p>Voltage divider for Thermistor</p></td>
-  </tr>
-  <tr>
-    <td><p>10</p></td>
-    <td><p>Vishay TSOP31130 IR RCVR</p></td>
-    <td><p>30kHz carrier frequency</p></td>
-    <td><p>2</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$1.41</p></td>
-    <td><p>$2.82</p></td>
-    <td><p>Decode user inputs</p></td>
-  </tr>
-  <tr>
-    <td><p>11</p></td>
-    <td><p>330 ohm resistor</p></td>
-    <td><p>330 ohm resistor, &lt;5% tolerance, 3W</p></td>
-    <td><p>2</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$0.59</p></td>
-    <td><p>$1.18</p></td>
-    <td><p>Current Limit for IR Receiv er</p></td>
-  </tr>
-  <tr>
-    <td><p>12</p></td>
-    <td><p>ATT-RC1534801 Remote</p></td>
-    <td><p>General-purpose TV remote. IR NTC protocol</p></td>
-    <td><p>1</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$9.99</p></td>
-    <td><p>$9.99</p></td>
-    <td><p>Allow user inputs</p></td>
-  </tr>
-  <tr>
-    <td><p>13</p></td>
-    <td><p>CQRSENTDS01 TDS Sensor</p></td>
-    <td><p>Analog reading 0-2.3V. 0-1000ppm range</p></td>
-    <td><p>1</p></td>
-    <td><p>CQRobot</p></td>
-    <td><p>$7.99</p></td>
-    <td><p>$7.99</p></td>
-    <td><p>Measure TDS of plant solution</p></td>
-  </tr>
-  <tr>
-    <td><p>14</p></td>
-    <td><p>10uF Capacitor</p></td>
-    <td><p>Electrolytic Cap 100V</p></td>
-    <td><p>2</p></td>
-    <td><p>Provided by EEC172 Course</p></td>
-    <td><p>$0.18</p></td>
-    <td><p>$0.36</p></td>
-    <td><p>DC Filtering for IR Receiv er</p></td>
-  </tr>
-  <tr>
-    <td><p>15</p></td>
-    <td><p><u>AA Battery (4ct</u>)</p></td>
-    <td><p>1.5 Volt, Non-rechargable</p></td>
-    <td><p>1</p></td>
-    <td><p>Already had, but</p>
-      <p>available on Amazon</p></td>
-    <td><p>$3.65</p></td>
-    <td><p>$3.65</p></td>
-    <td><p>Provide Power to Motors</p></td>
-  </tr>
-  <tr>
-    <td><p>16</p></td>
-    <td><p>Battery Holder</p></td>
-    <td><p>2xAA (3 Volts Total)</p></td>
-    <td><p>2</p></td>
-    <td><p>Amazon</p></td>
-    <td><p>$2.50</p></td>
-    <td><p>$4.99</p></td>
-    <td><p>Provide Power to Motors</p></td>
-  </tr>
-  <tr>
-    <td colspan="3">
-      <p>TOTAL PARTS</p></td>
-    <td><p>25</p></td>
-    <td colspan="2">
-      <p>TOTAL</p></td>
-    <td><p>$262.37</p></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td colspan="3">
-      <p>TOTAL PARTS (Excluding Provided)</p></td>
-    <td><p>14</p></td>
-    <td colspan="2">
-      <p>TOTAL (Exluding Provided)</p></td>
-    <td><p>$36.12</p></td>
-    <td></td>
-  </tr>
-</tbody>
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="" data-sheets-root="1">
+  <thead>
+    <tr style="height:21px;">
+      <th>Component</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Purpose</th>
+      <th>Total Price</th>
+      <th>Supplier</th>
+    </tr>
+  </thead><colgroup><col width="100"><col width="100"><col width="100"><col width="100"><col width="100"><col width="100"></colgroup>
+  <tbody>
+    <tr style="height:21px;">
+      <td style="overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;CC3200-LAUNCHXL&quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:-98px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:50.5px;">CC3200-LAUNCHXL</div></div></td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;MCU Board&quot;}">MCU Board</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Main board&quot;}">Main board</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:66}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$66.00</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Adafruit 1431 OLED&quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:-98px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:50.5px;">Adafruit 1431 OLED</div></div></td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;128x128 RGB OLED Display, SPI protocol&quot;}">128x128 RGB OLED Display, SPI protocol</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Display game&quot;}">Display game</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:39.95}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$39.95</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;ATT-RC1534801 Remote&quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:-98px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:50.5px;">ATT-RC1534801 Remote</div></div></td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Universal TV remote, IR NTC protocol&quot;}">Universal TV remote, IR NTC protocol</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Controlling the game&quot;}">Controlling the game</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:9.99}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$9.99</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;10uF Capacitor&quot;}">10uF Capacitor</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Capacitor&quot;}">Capacitor</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Part of the circuit for the IR receiver&quot;}">Part of the circuit for the IR receiver</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0.18}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$0.18</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;100 ohm resistor&quot;}">100 ohm resistor</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Resistor&quot;}">Resistor</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Part of the circuit for the IR receiver&quot;}">Part of the circuit for the IR receiver</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0.1}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$0.10</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Vishay TSOP31130 IR RCVR&quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:-98px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:50.5px;">Vishay TSOP31130 IR RCVR</div></div></td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;IR Receiver&quot;}">IR Receiver</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}">1</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Part of the circuit for the IR receiver&quot;}">Part of the circuit for the IR receiver</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1.41}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$1.41</td>
+      <td style="border-right:1px solid transparent;overflow:visible;padding:2px 0px 2px 0px;vertical-align:middle;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Provided by EEC172 Course &quot;}"><div style="white-space:nowrap;overflow:hidden;position:relative;width:196px;left:3px;"><div style="margin-left:-100%;margin-right:-100%;text-align:center;position:relative;left:-50.5px;">Provided by EEC172 Course </div></div></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" rowspan="1" colspan="2" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Total Parts:&quot;}">Total Parts:</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:6}">6</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Total Price:&quot;}">Total Price:</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:117.63}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$117.63</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;"></td>
+    </tr>
+    <tr style="height:21px;">
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" rowspan="1" colspan="2" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Total Parts (excluding provided):&quot;}">Total Parts (excluding provided):</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}">0</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Total Price (exclusing provided):&quot;}">Total Price (exclusing provided):</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}" data-sheets-numberformat="{&quot;1&quot;:4,&quot;2&quot;:&quot;\&quot;$\&quot;#,##0.00&quot;,&quot;3&quot;:1}">$0.00</td>
+      <td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:middle;"></td>
+    </tr>
+  </tbody>
 </table>
